@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8"/>
+        <title>Enigma</title>
+        <!--<link href="{{ url_for('static', filename='styles.css') }}" rel="stylesheet"/>-->
+        <style>
+            body{
+                width: 960px;
+                margin: auto;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        
+        <h2>Enigma</h2>
+
+        <div class="content">
+            <form action="{{ url_for('index') }}" method="POST"> 
+                <input type="text" name="plaintext" placeholder="Enter text:"><br>
+            </form>
+            <br>
+            Ciphertext: {{ ciphertext }}
+        </div>
+
+    </body>
+
+</html>

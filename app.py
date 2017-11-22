@@ -13,3 +13,6 @@ def index():
 
     if request.method == "GET":
         return render_template("index.html", ciphertext="")
+
+if __name__ == "__main__":
+    app.run()

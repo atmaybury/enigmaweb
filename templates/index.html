@@ -24,6 +24,31 @@
         <div class="main">
             <form action="{{ url_for('index') }}" method="POST" id="inputform"> 
                 <textarea name="plaintext" class="textbox" placeholder="Enter text" autofocus></textarea><br><br>
+                <select name="r1">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                <select name="r2">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+                <select name="r3">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select>
+
                 <input type="submit" class="button" value="ENCRYPT">
             </form><br>
             <textarea class="textbox" placeholder="Ciphertext">{{ ciphertext }}</textarea>

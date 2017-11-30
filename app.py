@@ -8,7 +8,10 @@ def index():
 
     if request.method == "POST":
         plaintext = request.form.get("plaintext")
-        ciphertext = enigma(plaintext)
+        r1 = int(request.form.get("r1"))
+        r2 = int(request.form.get("r2"))
+        r3 = int(request.form.get("r3"))
+        ciphertext = enigma(plaintext, r1, r2, r3)
         return render_template("index.html", ciphertext=ciphertext)
 
     if request.method == "GET":

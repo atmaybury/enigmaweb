@@ -1,4 +1,4 @@
-def enigma(inputString):
+def enigma(inputString, r1, r2, r3):
 
     # rotor strings
     palpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
@@ -12,10 +12,10 @@ def enigma(inputString):
     r1 = int(input("Rotor 1: ")) % 26
     r2 = int(input("Rotor 2: ")) % 26
     r3 = int(input("Rotor 3: ")) % 26
-    """
     r1 = 0
     r2 = 0
     r3 = 0
+    """
 
     # align rotors to settings
     if r1 != 0:

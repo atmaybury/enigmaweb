@@ -1,31 +1,22 @@
-def enigma(inputString, r1, r2, r3):
+def enigma(inputString, rotorPos):
 
     # rotor strings
+    # TODO: make loop to retrieve from db
     palpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
     rotor1 = list("BDFHJLCPRTXVZNYEIWGAKMUSQO")
     rotor2 = list("AJDKSIRUXBLHWTMCQGZNPYFVOE")
     rotor3 = list("EKMFLGDQVZNTOWYHXUSPAIBRCJ")
     reflec = list("YRUHQSLDPXNGOKMIEBFZCWVJAT")
 
-    # initial rotor settings
-    """
-    r1 = int(input("Rotor 1: ")) % 26
-    r2 = int(input("Rotor 2: ")) % 26
-    r3 = int(input("Rotor 3: ")) % 26
-    r1 = 0
-    r2 = 0
-    r3 = 0
-    """
+    rotors = []
+    rotors.append(rotor1)
+    rotors.append(rotor2)
+    rotors.append(rotor3)
 
-    # align rotors to settings
-    if r1 != 0:
-        rotor1 = arrayRotate(rotor1, r1)
-    if r2 != 0:
-        rotor2 = arrayRotate(rotor2, r2)
-    if r3 != 0:
-        rotor3 = arrayRotate(rotor3, r3)
+    for c, i in enumerate(rotorPos):
+        if i != 0:
+            rotors[c] = arrayRotate(rotors[c], i)
 
-    # TODO: take input from argument
     plaintext = ""
     for c, i in enumerate(inputString):
         if i.isalpha():
@@ -37,22 +28,23 @@ def enigma(inputString, r1, r2, r3):
     for c, i in enumerate(plaintext):
 
         # turn rotors
-        rotor1 = arrayRotate(rotor1, 1)
-        r1 = (r1 + 1) % 26
-        if rotor1 == 26:
-            rotor2 = arrayRotate(rotor2, 1)
-            r2 = (r2 + 1) % 26
-            if rotor2 == 26:
-                rotor3 = arrayRotate(rotor3, 1)
+        # TODO: make method to rotate and check next until :-1
+        rotors[0] = arrayRotate(rotors[0], 1)
+        rotorPos[0] = (rotorPos[0] + 1) % 26
+        if rotorPos[0] == 26:
+            rotors[1] = arrayRotate(rotors[1], 1)
+            rotorPos[1] = (rotorPos + 1) % 26
+            if rotorPos[1] == 26:
+                rotors[2] = arrayRotate(rotors[2], 1)
 
         # passthrough
-        c1 = rotorPass(rotor1, i)
-        c2 = rotorPass(rotor2, c1)
-        c3 = rotorPass(rotor3, c2)
+        c1 = rotorPass(rotors[0], i)
+        c2 = rotorPass(rotors[1], c1)
+        c3 = rotorPass(rotors[2], c2)
         ref = rotorPass(reflec, c3)
-        c4 = palpha[rotor3.index(ref)]
-        c5 = palpha[rotor2.index(c4)]
-        c6 = palpha[rotor1.index(c5)]
+        c4 = palpha[rotors[2].index(ref)]
+        c5 = palpha[rotors[1].index(c4)]
+        c6 = palpha[rotors[0].index(c5)]
 
         ciphertext += c6
 

@@ -41,4 +41,7 @@ $(document).ready(function(){
 
     });
 
+    $('form').on('reset', function(){
+        $("#ciphertext").slideUp();
+    });
 });

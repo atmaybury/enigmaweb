@@ -7,16 +7,17 @@ textarea{
 }
 #swap{
     background-color: #2aa198;
-    color: "#fffff";
+    color: #ffffff;
 }   
 #submit{
     background-color: #cb4b16;
+    color: #ffffff;
 }   
 #reset{
     background-color: #b58900;
-    color: "#ffffff";
+    color: #ffffff;
 }
 h2{ 
-    color: "#073642";
+    color: #586e75;
     font-family: Courier New, Monospace;
 }

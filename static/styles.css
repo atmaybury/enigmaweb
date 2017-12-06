@@ -21,6 +21,9 @@ textarea{
 #r0, #r1, #r2{
     text-align: center;
 }
+#infoButton{
+    background-color: #eee8d5;
+}
 h2{ 
     color: #586e75;
     font-family: Courier New, Monospace;

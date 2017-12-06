@@ -6,16 +6,13 @@ $(document).ready(function(){
     // disable swap until after submit
     $("#swap").prop("disabled", true);
 
-    // alert and prevent submit if any empty fields
-    $("#inputForm").submit(function() {
+    // pass form via ajax to flask
+    $('form').on('submit', function(e){
         if ($.trim($("#plaintext").val()) == "" || $.trim($("#r0").val()) == "" || $.trim($("#r1").val()) == "" || $.trim($("#r2").val()) == "" ) {
             alert("Please fill all fields!");
             return false;
         }
-    });
 
-    // pass form via ajax to flask
-    $('form').on('submit', function(e){
         var plaintext = $("#plaintext").val();
         var r0 = $("#r0").val();
         var r1 = $("#r1").val();

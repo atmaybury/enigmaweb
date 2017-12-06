@@ -10,7 +10,9 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}"/>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
         {{ JSGlue.include() }}
 
@@ -35,9 +37,9 @@
                             <input id="r0" name="r0" maxlength="1" size="1">
                             <input id="r1" name="r1" maxlength="1" size="1">
                             <input id="r2" name="r2" maxlength="1" size="1">
-                            <input class="btn btn-primary" id="submit" type="submit" value="Encrypt">
-                            <input class="btn btn-secondary" id="reset" type="reset">
-                            <button id="swap" class="btn btn-light pull-right" type="button">⇅</button>
+                            <input class="btn" id="submit" type="submit" value="Encrypt">
+                            <input class="btn" id="reset" type="reset">
+                            <button id="swap" class="btn pull-right" type="button">⇅</button>
                         </form><br>
 
                         <textarea id="ciphertext" class="form-control" rows="10" placeholder="Ciphertext">{{ ciphertext }}</textarea>

@@ -1,0 +1,22 @@
+body{
+    background-color: #eee8d5;
+}
+textarea{
+    background-color: #fdf6e3;
+    font-family: Courier New, Monospace;
+}
+#swap{
+    background-color: #2aa198;
+    color: "#fffff";
+}   
+#submit{
+    background-color: #cb4b16;
+}   
+#reset{
+    background-color: #b58900;
+    color: "#ffffff";
+}
+h2{ 
+    color: "#073642";
+    font-family: Courier New, Monospace;
+}

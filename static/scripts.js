@@ -1,10 +1,15 @@
 $(document).ready(function(){
 
-    // show ciphertext box when form is submitted
+    // hide ciphertext area on load
     $("#ciphertext").hide();
 
+    // disable swap until after submit
+    $("#swap").prop("disabled", true);
+
+    // show ciphertext area on submit, enable swap button
     $("#submit").click(function(){
         $("#ciphertext").slideDown();
+        $("#swap").prop("disabled", false);
     });
 
     // alert and prevent submit if any empty fields
@@ -41,13 +46,17 @@ $(document).ready(function(){
 
     });
 
+    // reset form, disabe swap button
     $('form').on('reset', function(){
         $("#ciphertext").slideUp();
+        $("#swap").prop("disabled", true);
     });
 
+    // swap ctext and ptext vals, disable swap
     $("#swap").on('click', function(){
         var ciphertext = $("#ciphertext").val();
         $("#plaintext").val(ciphertext);
         $("#ciphertext").slideUp();
+        $("#swap").prop("disabled", true);
     });
 });

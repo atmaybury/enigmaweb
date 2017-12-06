@@ -44,4 +44,10 @@ $(document).ready(function(){
     $('form').on('reset', function(){
         $("#ciphertext").slideUp();
     });
+
+    $("#swap").on('click', function(){
+        var ciphertext = $("#ciphertext").val();
+        $("#plaintext").val(ciphertext);
+        $("#ciphertext").slideUp();
+    });
 });

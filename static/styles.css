@@ -4,6 +4,7 @@ body{
 textarea{
     background-color: #fdf6e3;
     font-family: Courier New, Monospace;
+    box-sizing: border-box;
 }
 #swap{
     background-color: #2aa198;
@@ -16,6 +17,9 @@ textarea{
 #reset{
     background-color: #b58900;
     color: #ffffff;
+}
+#r0, #r1, #r2{
+    text-align: center;
 }
 h2{ 
     color: #586e75;

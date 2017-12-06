@@ -6,12 +6,6 @@ $(document).ready(function(){
     // disable swap until after submit
     $("#swap").prop("disabled", true);
 
-    // show ciphertext area on submit, enable swap button
-    $("#submit").click(function(){
-        $("#ciphertext").slideDown();
-        $("#swap").prop("disabled", false);
-    });
-
     // alert and prevent submit if any empty fields
     $("#inputForm").submit(function() {
         if ($.trim($("#plaintext").val()) == "" || $.trim($("#r0").val()) == "" || $.trim($("#r1").val()) == "" || $.trim($("#r2").val()) == "" ) {
@@ -39,7 +33,9 @@ $(document).ready(function(){
             }
         })
         .done(function(data){
+            $("#ciphertext").slideDown();
             $("#ciphertext").val(data.ciphertext);
+            $("#swap").prop('disabled', false);
         });
 
         e.preventDefault();

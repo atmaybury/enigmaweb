@@ -2,9 +2,9 @@ body{
     background-color: #eee8d5;
 }
 textarea{
-    background-color: #fdf6e3;
     font-family: Courier New, Monospace;
     box-sizing: border-box;
+    resize: none;
 }
 #swap{
     background-color: #2aa198;

@@ -49,7 +49,8 @@ $(document).ready(function(){
     $("#swap").on('click', function(){
         var ciphertext = $("#ciphertext").val();
         $("#plaintext").val(ciphertext);
-        $("#ciphertext").slideUp();
+        $("#ciphertext").val("");
         $("#swap").prop("disabled", true);
     });
+
 });

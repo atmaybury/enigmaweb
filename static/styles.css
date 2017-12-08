@@ -1,3 +1,5 @@
+/* GENERAL STYLES */
+
 body{
     background-color: #eee8d5;
 }
@@ -5,6 +7,19 @@ textarea{
     font-family: Courier New, Monospace;
     box-sizing: border-box;
     resize: none;
+}
+footer{
+    height: 80px;
+    background-color: #2aa198;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+/* BUTTONS & ETC */
+
+.btn{
+    font-family: Courier New, Monospace;
 }
 #swap{
     background-color: #2aa198;
@@ -18,16 +33,22 @@ textarea{
     background-color: #b58900;
     color: #ffffff;
 }
-#r0, #r1, #r2{
-    text-align: center;
-}
 #infoButton{
     background-color: #eee8d5;
 }
+#r0, #r1, #r2{
+    text-align: center;
+}
+
+
+/* OTHER */
+
+#about{
+    font-family: Courier New, monospace;
+    text-align: justify;
+    text-justify: inter-word;
+}
 h2{ 
     color: #586e75;
-    font-family: Courier New, Monospace;
-}
-.btn{
     font-family: Courier New, Monospace;
 }

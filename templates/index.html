@@ -1,65 +1,35 @@
-<!DOCTYPE html>
+{% extends "layout.html" %}    
 
-<html lang="en">
+{% block title %}
+    Cipher
+{% endblock %}
 
-    <head>
+{% block main %}
 
-        <meta charset="utf-8"/>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-group">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-
-        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-
-        {{ JSGlue.include() }}
-
-        <title>Enigma</title>
-        
-    </head>
-
-    <body>
-
-        <div class="container">
-
-        <div class="page-header">
-            <h2>ENIGMA</h2>
-        </div>
-
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="form-group">
-
-                        <form id="inputForm" action="{{ url_for('index') }}" method="POST"> 
-                            <textarea id="plaintext" name="plaintext" class="form-control" rows="10" placeholder="Enter text" autofocus></textarea><br>
-                        </form>
-                        <input id="r0" name="r0" form="inputForm" maxlength="1" size="1">
-                        <input id="r1" name="r1" form="inputForm" maxlength="1" size="1">
-                        <input id="r2" name="r2" form="inputForm" maxlength="1" size="1">
-                        <input id="submit" class="btn" type="submit" form="inputForm" value="Encrypt">
-                        <input id="reset" class="btn" type="reset" form="inputForm">
-                        <button id="swap" class="btn pull-right" type="button">⬆</button>
-                        <button id="infoButton" class="btn" data-toggle="collapse" data-target="#info">Info ▼</button><br><br>
-                        <div id="info" class="collapse">
-                            Enter 3 letters in the 3 boxes above. These will be the cipher key.<br><br>
-                        </div>
-
-                        <textarea id="ciphertext" class="form-control" rows="10">{{ ciphertext }}</textarea>
-
+                    <form id="inputForm" action="{{ url_for('index') }}" method="POST"> 
+                        <textarea id="plaintext" name="plaintext" class="form-control" rows="10" placeholder="Enter text" autofocus></textarea><br>
+                    </form>
+                    <input id="r0" name="r0" form="inputForm" maxlength="1" size="1">
+                    <input id="r1" name="r1" form="inputForm" maxlength="1" size="1">
+                    <input id="r2" name="r2" form="inputForm" maxlength="1" size="1">
+                    <input id="submit" class="btn" type="submit" form="inputForm" value="Encrypt">
+                    <input id="reset" class="btn" type="reset" form="inputForm">
+                    <button id="swap" class="btn pull-right" type="button">⬆</button>
+                    <button id="infoButton" class="btn" data-toggle="collapse" data-target="#info">Info ▼</button><br><br>
+                    <div id="info" class="collapse">
+                        Enter 3 letters in the 3 boxes above. These will be the cipher key.<br><br>
                     </div>
+
+                    <textarea id="ciphertext" class="form-control" rows="10">{{ ciphertext }}</textarea>
+
                 </div>
             </div>
-
         </div>
-        
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    </div>
 
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-        <script src="{{ url_for('static', filename='scripts.js') }}"></script>
-
-    </body>
-
-</html>
+{% endblock %}      

@@ -27,15 +27,7 @@ def enigma(inputString, rotorPos):
     # encipher input
     for c, i in enumerate(plaintext):
 
-        # turn rotors
-        # TODO: make method to rotate and check next until :-1
-        rotors[0] = arrayRotate(rotors[0], 1)
-        rotorPos[0] = (rotorPos[0] + 1) % 26
-        if rotorPos[0] == 26:
-            rotors[1] = arrayRotate(rotors[1], 1)
-            rotorPos[1] = (rotorPos + 1) % 26
-            if rotorPos[1] == 26:
-                rotors[2] = arrayRotate(rotors[2], 1)
+        rotorMove(rotorPos, rotors, 0)
 
         # passthrough
         c1 = rotorPass(rotors[0], i)
@@ -59,3 +51,11 @@ def arrayRotate(l, n):
 def rotorPass(rotor, n):
     i = ord(n) - 65
     return rotor[i]
+
+def rotorMove(rotorPos, rotors, i):
+    rotors[i] = arrayRotate(rotors[i], 1)
+    rotorPos[i] = (rotorPos[i] + 1) % 26
+    if i == len(rotors) - 1:
+        return 0
+    if rotorPos[i] == 26:
+        rotorMove(rotorPos, rotors, i + 1)

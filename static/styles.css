@@ -8,11 +8,12 @@ textarea{
     box-sizing: border-box;
     resize: none;
 }
-footer{
-    height: 80px;
+.navbar{
     background-color: #2aa198;
-    color: #ffffff;
     text-align: center;
+}
+#navbarText, #navbarText a{
+    color: white;
 }
 
 

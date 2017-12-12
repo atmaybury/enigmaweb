@@ -22,6 +22,12 @@
 
     <body>
 
+        <nav class="navbar navbar-default">
+            <p id="navbarText" class="navbar-text">
+            <a href="{{ url_for('index') }}">Cipher</a> | <a href="{{ url_for('about') }}">About</a>
+            </p>
+        </nav>        
+
         <div class="container">
 
             <div class="page-header">
@@ -29,10 +35,6 @@
             </div>
 
             {% block main %}{% endblock %}
-
-            <footer class="footer navbar-fixed-bottom">
-                <a href="{{ url_for('about') }}">About</a>
-            </footer>        
 
         </div>
 

@@ -1,10 +1,21 @@
 $(document).ready(function(){
 
+    // ***SETUP***
+
     // hide ciphertext area on load
     $("#ciphertext").hide();
 
     // disable swap until after submit
     $("#swap").prop("disabled", true);
+
+
+    // ***INPUT FORM***
+
+    $('.rotors').keyup(function () {
+        if (this.value.length == this.maxLength) {
+          $(this).next('.rotors').focus();
+        }
+    });
 
     // pass form via ajax to flask
     $('form').on('submit', function(e){

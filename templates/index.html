@@ -14,9 +14,9 @@
                     <form id="inputForm" action="{{ url_for('index') }}" method="POST"> 
                         <textarea id="plaintext" name="plaintext" class="form-control" rows="10" placeholder="Enter text" autofocus></textarea><br>
                     </form>
-                    <input id="r0" name="r0" form="inputForm" maxlength="1" size="1">
-                    <input id="r1" name="r1" form="inputForm" maxlength="1" size="1">
-                    <input id="r2" name="r2" form="inputForm" maxlength="1" size="1">
+                    <input id="r0" name="r0" class="rotors" form="inputForm" maxlength="1" size="1">
+                    <input id="r1" name="r1" class="rotors" form="inputForm" maxlength="1" size="1">
+                    <input id="r2" name="r2" class="rotors" form="inputForm" maxlength="1" size="1">
                     <input id="submit" class="btn" type="submit" form="inputForm" value="Encrypt">
                     <input id="reset" class="btn" type="reset" form="inputForm">
                     <button id="swap" class="btn pull-right" type="button">⬆</button>

@@ -1,9 +1,11 @@
-#ENIGMAWEB
+# ENIGMAWEB
 
 A basic implementation of the German WWII Enigma machine.
 Uses Python for the backend, and Flask to serve.
 
 To use, install Flask and Flask-JSGlue in your virtual environment.
+
+![Enigma screenshot](./enigma_screenshot.png)
 
 Enter cleartext in the upper dialog box.
 Enter 3 letters to act as the cipher key. This is the equivalent of setting the rotor positions on the physical Enigma machine.

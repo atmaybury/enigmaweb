@@ -59,21 +59,10 @@ class Enigma:
 
             ciphertext.append(back_r1)
 
-            print(
-                f"{char}|{after_r1}|{after_r2}|{after_r3}| |{after_reflector}| |{back_r3}|{back_r2}|{back_r1}"
-            )
-
         return "".join(ciphertext)
 
 
 if __name__ == "__main__":
     enigma = Enigma([1, 2, 7])
     result = enigma.encipher("A")
-    # print(result)
-    enigma2 = Enigma([1, 2, 7])
-    result = enigma2.encipher("R")
-    # print(result)
-
-# TODO
-# validate input
-# new way to pass input (rotor positions should have same len as rotors)
+    print(result)

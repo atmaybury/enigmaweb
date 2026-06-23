@@ -1,61 +1,79 @@
-def enigma(inputString, rotorPos):
+class Enigma:
+    rotors: list[list[str]]
+    reflector: list[str]
+    rotor_offsets: list[int]
 
-    # rotor strings
-    # TODO: make loop to retrieve from db
-    palpha = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-    rotor1 = list("BDFHJLCPRTXVZNYEIWGAKMUSQO")
-    rotor2 = list("AJDKSIRUXBLHWTMCQGZNPYFVOE")
-    rotor3 = list("EKMFLGDQVZNTOWYHXUSPAIBRCJ")
-    reflec = list("YRUHQSLDPXNGOKMIEBFZCWVJAT")
+    def __init__(self, rotor_offsets: list[int]):
+        self.rotors = [
+            list("BDFHJLCPRTXVZNYEIWGAKMUSQO"),
+            list("AJDKSIRUXBLHWTMCQGZNPYFVOE"),
+            list("EKMFLGDQVZNTOWYHXUSPAIBRCJ"),
+        ]
+        self.reflector = list("YRUHQSLDPXNGOKMIEBFZCWVJAT")
+        self.rotor_offsets = [offset % 26 for offset in rotor_offsets]
 
-    rotors = []
-    rotors.append(rotor1)
-    rotors.append(rotor2)
-    rotors.append(rotor3)
+        # apply offsets
+        for i, offset in enumerate(rotor_offsets):
+            self.rotors[i] = self._rotate(self.rotors[i], offset)
 
-    for c, i in enumerate(rotorPos):
-        if i != 0:
-            rotors[c] = arrayRotate(rotors[c], i)
+    @staticmethod
+    def _index_of(char: str) -> int:
+        return ord(char) - 65
 
-    plaintext = ""
-    for c, i in enumerate(inputString):
-        if i.isalpha():
-            plaintext += i.upper()
+    @staticmethod
+    def _char_at(index: int) -> str:
+        return chr(index + 65)
 
-    ciphertext = ""
+    @staticmethod
+    def _rotate(rotor: list[str], offset: int) -> list[str]:
+        return rotor[offset:] + rotor[:offset]
 
-    # encipher input
-    for c, i in enumerate(plaintext):
+    def _rotor_move(self, index: int = 0):
+        rotate_next = self.rotor_offsets[index] >= 25
 
-        rotorMove(rotorPos, rotors, 0)
+        self.rotors[index] = self._rotate(self.rotors[index], 1)
+        self.rotor_offsets[index] = (self.rotor_offsets[index] + 1) % 26
 
-        # passthrough
-        c1 = rotorPass(rotors[0], i)
-        c2 = rotorPass(rotors[1], c1)
-        c3 = rotorPass(rotors[2], c2)
-        ref = rotorPass(reflec, c3)
-        c4 = palpha[rotors[2].index(ref)]
-        c5 = palpha[rotors[1].index(c4)]
-        c6 = palpha[rotors[0].index(c5)]
+        if rotate_next:
+            self._rotor_move(index + 1)
 
-        ciphertext += c6
+    def encipher(self, input_string: str):
+        ciphertext = []
 
-    return ciphertext
+        for char in input_string.upper():
+            self._rotor_move()
+
+            # forward pass through rotors
+            # finds position in next row using index of char in current
+            after_r1 = self.rotors[0][self._index_of(char)]
+            after_r2 = self.rotors[1][self._index_of(after_r1)]
+            after_r3 = self.rotors[2][self._index_of(after_r2)]
+
+            # reverse direction
+            after_reflector = self.reflector[self._index_of(after_r3)]
+
+            # finds position in next row by finding char at position of index in current
+            back_r3 = self._char_at(self.rotors[2].index(after_reflector))
+            back_r2 = self._char_at(self.rotors[1].index(back_r3))
+            back_r1 = self._char_at(self.rotors[0].index(back_r2))
+
+            ciphertext.append(back_r1)
+
+            print(
+                f"{char}|{after_r1}|{after_r2}|{after_r3}| |{after_reflector}| |{back_r3}|{back_r2}|{back_r1}"
+            )
+
+        return "".join(ciphertext)
 
 
-""" FUNCTIONS """
+if __name__ == "__main__":
+    enigma = Enigma([1, 2, 7])
+    result = enigma.encipher("A")
+    # print(result)
+    enigma2 = Enigma([1, 2, 7])
+    result = enigma2.encipher("R")
+    # print(result)
 
-def arrayRotate(l, n):
-    return l[n:] + l[:n]  
-
-def rotorPass(rotor, n):
-    i = ord(n) - 65
-    return rotor[i]
-
-def rotorMove(rotorPos, rotors, i):
-    rotors[i] = arrayRotate(rotors[i], 1)
-    rotorPos[i] = (rotorPos[i] + 1) % 26
-    if i == len(rotors) - 1:
-        return 0
-    if rotorPos[i] == 26:
-        rotorMove(rotorPos, rotors, i + 1)
+# TODO
+# validate input
+# new way to pass input (rotor positions should have same len as rotors)

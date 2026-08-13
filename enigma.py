@@ -63,6 +63,6 @@ class Enigma:
 
 
 if __name__ == "__main__":
-    enigma = Enigma([1, 2, 7])
-    result = enigma.encipher("A")
+    enigma = Enigma([0, 0, 0])
+    result = enigma.encipher("dmq")
     print(result)

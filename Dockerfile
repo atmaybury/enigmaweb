@@ -9,10 +9,10 @@ ENV PYTHONUNBUFFERED=1 \
 	FLASK_ENV=production
 
 # Copy the application files
-COPY requirements.txt ./
+COPY pyproject.toml ./
 
 # Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir .
 
 COPY . .
 

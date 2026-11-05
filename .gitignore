@@ -2,3 +2,4 @@
 *.swp
 Pipfile.lock
 env/
+.env
